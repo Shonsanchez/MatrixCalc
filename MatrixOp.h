@@ -19,40 +19,32 @@ Matrix* createMatrix(int row, int col);
 /**Adds two matrices together by adding each row,column from m2 to m1
  * @param m1 - the first matrix
  * @param m2  - the second matrix
- * @param row - the row count of the matrices
- * @param col - the column count of the matrices
  * @return the summation of the matrices
  */
-int** addMatrix(int** m1, int** m2, int row, int col);
+int** addMatrix(Matrix* m1, Matrix* m2);
 
 /**Subtracts the entries in row,col from m1 by m2
  * @param m1 - the first matrix
  * @param m2 - the second matrix
- * @param row - the row count of the matrices
- * @param col - the column count of the matrices
  * @return - the subtraction of the matrix
  */
-int** subMatrix(int** m1, int** m2, int row, int col);
+int** subMatrix(Matrix* m1, Matrix* m2);
 
 /**Multiplies two matrices
  * @param m1 - the first matrix
  * @param m2 - the second matrix
- * @param row - the row count of the matrices
- * @param col - the column count of the matrices
  * @return - the multiplication of the matrices
  */
-int** multMatrix(int** m1, int** m2,int row, int col);
+int** multMatrix(Matrix* m1, Matrix* m2);
 
 
-int** inverseM(int** m1, int row, int col);
+int** inverseM(Matrix* m);
 
 /**
  * Takes the rows of the matrix and convert them into columns.
- * @param m1 - m1 - the matrix to transpose
- * @param row - the row count of the matrix
- * @param col - the column count of the matrix
+ * @param m- the matrix to transpose
  * @return - the transpose of the matrix
  */
-int** transposeM(int** m1, int row, int col);
+int** transposeM(Matrix* m);
 
 #endif; //MATRIXCALC_MATRIXOP_H
