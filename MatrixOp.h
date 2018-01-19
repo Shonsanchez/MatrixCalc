@@ -16,6 +16,8 @@ typedef struct{
 
 Matrix* createMatrix(int row, int col);
 
+void printMatrix(Matrix* m);
+
 /**Adds two matrices together by adding each row,column from m2 to m1
  * @param m1 - the first matrix
  * @param m2  - the second matrix
@@ -37,7 +39,11 @@ Matrix* subMatrix(Matrix* m1, Matrix* m2);
  */
 Matrix* multMatrix(Matrix* m1, Matrix* m2);
 
-
+/**
+ * Creates a new matrix that is the reciprocal
+ * @param m - the matrix to invert
+ * @return - an inverted matrix or NULL if matrix cannot be inverted
+ */
 Matrix* inverseM(Matrix* m);
 
 /**
@@ -47,4 +53,4 @@ Matrix* inverseM(Matrix* m);
  */
 Matrix* transposeM(Matrix* m);
 
-#endif; //MATRIXCALC_MATRIXOP_H
+#endif //MATRIXCALC_MATRIXOP_H
