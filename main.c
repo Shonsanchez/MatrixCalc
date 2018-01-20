@@ -1,11 +1,12 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "MatrixOp.h"
 
 int main() {
-    //int choice;
-    int row;
-    int col;
-    printf("Welcome to MatrixCalc.\n");
+  //int choice;
+  int row = 0;
+  int col = 0;
+  printf("Welcome to MatrixCalc.\n");
 //   while(choice > 5 || choice < 1){
 //        printf("Please select an option\n");
 //        printf("1)Addition\n"

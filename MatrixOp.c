@@ -8,8 +8,7 @@
 Matrix* createMatrix(int row, int col){
     Matrix* m = malloc(sizeof(Matrix));
     m->matrix = malloc(sizeof(int*)*row);
-
-    for (int i = 0; i < col; ++i) {
+    for (int i = 0; i < row; ++i) {
         m->matrix[i] = malloc(sizeof(int) *col);
     }
     m->rowC = row;
