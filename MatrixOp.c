@@ -3,6 +3,7 @@
 //
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h>
 #include "MatrixOp.h"
 
 Matrix* createMatrix(int row, int col){
@@ -16,6 +17,17 @@ Matrix* createMatrix(int row, int col){
 	m->curCol = 0;
 	m->curRow = 0;
 	return m;
+}
+
+void destroyMatrix(Matrix* m){
+	assert(m);
+	assert(m->matrix);
+	int row =  m->rowC;
+	for(int r = 0; r < row; r++){
+		free(m->matrix[r]);
+	}
+	free(m->matrix);
+	free(m);
 }
 
 void printMatrix(Matrix* m){

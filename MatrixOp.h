@@ -26,6 +26,13 @@ typedef struct{
  */
 Matrix* createMatrix(int row, int col);
 
+
+/**
+ * Frees up the memory in the matrix. 
+ * @param m - the matrix to free.
+ */
+void destroyMatrix(Matrix* m);
+
 /**
  * Displays the matrix in standard output
  * @param m - the matrix to be printed.
