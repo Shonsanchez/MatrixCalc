@@ -46,16 +46,16 @@ Matrix* promptMatrixRC(int row, int col){
 
 int main() {
 	int choice = 0; // choice for the operation to perform on matrix or matrices
-	Matrix* m1; // the first matrix
-	Matrix* m2; // the second matrix
-	Matrix* r; // the resulting matrix
+	Matrix* m1 = NULL; // the first matrix
+	Matrix* m2 = NULL; // the second matrix
+	Matrix* r = NULL; // the resulting matrix
 	printf("Welcome to MatrixCalc.\n");
 	while(choice > 5 || choice < 1){
 		printf("Please select an option\n");
         printf("1)Addition\n"
 			   "2)Subtraction\n"
 			   "3)Muliplication\n"
-			   "4)inverse\n"
+			   "4)Inverse\n"
 			   "5)Transpose\n\n");
         scanf("%i",&choice);
 	}
@@ -96,8 +96,9 @@ int main() {
 	}
 	if(m1)
 		destroyMatrix(m1);
-	if(m2 != NULL)
+	if(m2){
 		destroyMatrix(m2);
+	}
 	if(r)
 		destroyMatrix(r);
     return 0;
