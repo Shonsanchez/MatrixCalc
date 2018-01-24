@@ -4,9 +4,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <math.h>
 #include "MatrixOp.h"
 
 Matrix* createMatrix(int row, int col){
+	assert(row);
+	assert(col);
 	Matrix* m = malloc(sizeof(Matrix));
 	m->matrix = malloc(sizeof(int*)*row);
 	for (int i = 0; i < row; ++i) {
@@ -89,7 +92,22 @@ Matrix* multMatrix(Matrix* m1, Matrix* m2){
 	return m3;
 }
 
+Matrix* decrementM(Matrix* m, int row, int col){
+	Matrix* r = createMatrix(m->rowC-1,m->rowC-1);
+	int mrow = 0;//The row of matrix m
+	int mcol = 0;
+	for(int rrow = 0; rrow < r->rowC; rrow++,mrow++){
+		mrow == row ? mrow++: row;
+		for(int rcol = 0, mcol = 0; rcol < r->rowC; rcol++, mcol++){
+			mcol == col ? mcol++ : col;
+			r->matrix[rrow][rcol] = m->matrix[mrow][mcol];
+		}
+	}
+	return r;
+}
+
 int determinate(Matrix* m){
+	assert(m->rowC > 1);
 	if(m->rowC == 2){
 		int a = m->matrix[0][0];
 		int b = m->matrix[0][1];
@@ -97,8 +115,14 @@ int determinate(Matrix* m){
 		int d = m->matrix[1][1];
 		return(a*d - b*c);
 	}
-	//Stub
-	return 0;
+	int sum = 0;
+	Matrix *d;
+	for(int col = 0; col < m->colC; col ++){
+		d = decrementM(m,0,col);
+		sum += pow(-1,col+2)*m->matrix[0][col]*determinate(d);
+		destroyMatrix(d);
+	}
+	return sum;
 }
 
 Matrix* inverseM(Matrix* m){

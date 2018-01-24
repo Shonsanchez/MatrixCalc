@@ -53,7 +53,7 @@ int main() {
 	Matrix* r = NULL; // the resulting matrix
 	int d;
 	printf("Welcome to MatrixCalc.\n");
-	while(choice > 5 || choice < 1){
+	while(choice > 6 || choice < 1){
 		printf("Please select an option\n");
         printf("1)Addition\n"
 			   "2)Subtraction\n"

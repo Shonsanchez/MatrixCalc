@@ -1,7 +1,6 @@
 //
 // Created by Shon on 1/19/2018.
 //
-
 #ifndef MATRIXCALC_MATRIXOP_H
 #define MATRIXCALC_MATRIXOP_H
 #define NEGATIVE_ONE -1
@@ -62,6 +61,17 @@ Matrix* subMatrix(Matrix* m1, Matrix* m2);
  * @return - the multiplication of the matrices
  */
 Matrix* multMatrix(Matrix* m1, Matrix* m2);
+
+
+/**
+ * Creates a squared matrix that excludes the entered
+ * row and col.
+ * @param m - a squared matrix
+ * @param row - the row of the matrix to exclude
+ * @param col - the col of the matrix to exclude
+ * @return - a matrix with the excluded row and column
+ */
+Matrix* decrementM(Matrix* m, int row, int col);
 
 /**
  * Checks for the dimensions of the matrix and calculates a determinate
