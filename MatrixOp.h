@@ -13,7 +13,7 @@ typedef struct{
     int curRow; // Current row
     int colC; //Column count
     int curCol; // Current column
-    int** matrix; //the matrix
+    float** matrix; //the matrix
 }Matrix;
 
 /**
@@ -80,7 +80,7 @@ Matrix* decrementM(Matrix* m, int row, int col);
  * @param m - a squared matrix
  * @return - the determinate of the matrix
  */
-int determinate(Matrix* m);
+float determinate(Matrix* m);
 
 /**
  * Creates a new matrix that is the reciprocal

@@ -11,9 +11,9 @@ Matrix* createMatrix(int row, int col){
 	assert(row);
 	assert(col);
 	Matrix* m = malloc(sizeof(Matrix));
-	m->matrix = malloc(sizeof(int*)*row);
+	m->matrix = malloc(sizeof(float*)*row);
 	for (int i = 0; i < row; ++i) {
-		m->matrix[i] = malloc(sizeof(int) *col);
+		m->matrix[i] = malloc(sizeof(float) *col);
 	}
 	m->rowC = row;
 	m->colC = col;
@@ -38,7 +38,7 @@ void printMatrix(Matrix* m){
 	int col = m->colC;
 	for (int i = 0; i < row; ++i) {
 		for(int j=0; j < col; j++){
-			printf("%3.i ",m->matrix[i][j]);
+			printf("%3.2f ",m->matrix[i][j]);
 		}
 		printf("\n");
 	}
@@ -106,7 +106,7 @@ Matrix* decrementM(Matrix* m, int row, int col){
 	return r;
 }
 
-int determinate(Matrix* m){
+float determinate(Matrix* m){
 	assert(m->rowC > 1);
 	if(m->rowC == 2){
 		int a = m->matrix[0][0];
@@ -115,7 +115,7 @@ int determinate(Matrix* m){
 		int d = m->matrix[1][1];
 		return(a*d - b*c);
 	}
-	int sum = 0;
+	float sum = 0;
 	Matrix *d;
 	for(int col = 0; col < m->colC; col ++){
 		d = decrementM(m,0,col);
@@ -126,10 +126,19 @@ int determinate(Matrix* m){
 }
 
 Matrix* inverseM(Matrix* m){
-	if(m->rowC ==2){
-		return determinate(m);
+	int rowC = m->rowC;
+	Matrix* r = createMatrix(rowC,rowC);
+	if(rowC ==2){
+		float d = 1/(float)determinate(m);
+		if(!d)
+			return NULL;
+	    r->matrix[0][0] = d * m->matrix[1][1];
+		r->matrix[0][1] = d * m->matrix[0][1] * -1;
+		r->matrix[1][0] = d * m->matrix[1][0] * -1;
+		r->matrix[1][1] = d * m->matrix[0][0];
+	return r;
 	}
-	return NULL;
+	return r;
 }
 
 Matrix* transposeM(Matrix* m){
