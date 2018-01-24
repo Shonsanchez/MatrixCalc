@@ -89,7 +89,24 @@ Matrix* multMatrix(Matrix* m1, Matrix* m2){
 	return m3;
 }
 
+int determinate(Matrix* m){
+	if(m->rowC == 2){
+		int a = m->matrix[0][0];
+		int b = m->matrix[0][1];
+		int c = m->matrix[1][0];
+		int d = m->matrix[1][1];
+		return(a*d - b*c);
+	}
+	//Stub
+	return 0;
+}
 
+Matrix* inverseM(Matrix* m){
+	if(m->rowC ==2){
+		return determinate(m);
+	}
+	return NULL;
+}
 
 Matrix* transposeM(Matrix* m){
 	int row = m->rowC;

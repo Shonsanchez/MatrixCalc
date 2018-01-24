@@ -4,7 +4,7 @@
 
 #ifndef MATRIXCALC_MATRIXOP_H
 #define MATRIXCALC_MATRIXOP_H
-
+#define NEGATIVE_ONE -1
 /**
  * A matrix struct that contains the number of rows
  * and columns of the matrix along with the inputs.
@@ -62,6 +62,15 @@ Matrix* subMatrix(Matrix* m1, Matrix* m2);
  * @return - the multiplication of the matrices
  */
 Matrix* multMatrix(Matrix* m1, Matrix* m2);
+
+/**
+ * Checks for the dimensions of the matrix and calculates a determinate
+ * for the matrix if it is 2 dimensional, else recursively creates a 
+ * smaller dimensioned matrix until a determinate can be computed.
+ * @param m - a squared matrix
+ * @return - the determinate of the matrix
+ */
+int determinate(Matrix* m);
 
 /**
  * Creates a new matrix that is the reciprocal
