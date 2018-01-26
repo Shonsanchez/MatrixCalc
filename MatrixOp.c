@@ -125,10 +125,26 @@ float determinate(Matrix* m){
 	return sum;
 }
 
+//Work on this. 
+Matrix* adjugate(Matrix* m){
+	Matrix* transposeM(Matrix* m);
+	int rowC = m->rowC;
+	Matrix* r = createMatrix(rowC,rowC);
+	for(int row = 0; row < rowC; row++){
+		for(int col = 0; col < rowC; col++){
+			float val = pow(-1,col+row)*determinate(decrementM(m,row,col));
+			r->matrix[row][col] = val;
+		}
+	}
+	Matrix* a = transposeM(r);
+	destroyMatrix(r);
+	return a;
+}
+
 Matrix* inverseM(Matrix* m){
 	int rowC = m->rowC;
 	Matrix* r = createMatrix(rowC,rowC);
-	if(rowC ==2){
+	if(rowC ==2){		
 		float d = 1/(float)determinate(m);
 		if(!d)
 			return NULL;
@@ -138,6 +154,14 @@ Matrix* inverseM(Matrix* m){
 		r->matrix[1][1] = d * m->matrix[0][0];
 	return r;
 	}
+	Matrix* a = adjugate(m); // the adjugate
+	float d = determinate(m);// The determinate
+	for(int row = 0; row < rowC ; row++){
+		for(int col = 0; col< rowC; col++){
+			r->matrix[row][col] =  a->matrix[row][col] / d;
+		}
+	}
+	destroyMatrix(a);
 	return r;
 }
 
