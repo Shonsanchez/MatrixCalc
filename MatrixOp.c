@@ -132,8 +132,10 @@ Matrix* adjugate(Matrix* m){
 	Matrix* r = createMatrix(rowC,rowC);
 	for(int row = 0; row < rowC; row++){
 		for(int col = 0; col < rowC; col++){
-			float val = pow(-1,col+row)*determinate(decrementM(m,row,col));
+			Matrix* d = decrementM(m,row,col);
+			float val = pow(-1,col+row)*determinate(d);
 			r->matrix[row][col] = val;
+			destroyMatrix(d);
 		}
 	}
 	Matrix* a = transposeM(r);
